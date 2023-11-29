@@ -1,0 +1,91 @@
+<html>
+    <title>Employee</title>
+    <head><h2>>Employee Details</h2></head>
+    <style>
+        th{
+            text-align: center;
+            color: #D6EFED;
+            font-size: 12pt;
+            border: 2px #D8D9DA;
+        }
+        tr{
+            font-size: 12pt;
+            border: 1px #D8D9DA;
+        }
+        table{
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px #D8D9DA;
+
+        }
+    </style>
+    <script>
+        function sorting(){
+            var originalTable = document.getElementById('main');
+            var techWriter = document.getElementById('tech');
+            var designation;
+            for(var i = 0 ; i < originalTable.rows.length ; i++){
+                designation = originalTable.rows[i].cells[1].innerHTML; //collect designation from table
+                if(designation == "Technical Writer"){
+                    var newRow=techWriter.insertRow(-1); //insert the row in designation table
+                    for(var j = 0 ; j < originalTable.rows[i].cells.length ; j++){
+                        var newCell = newRow.insertCell(j);
+                        newCell.innerHTML = originalTable.rows[i].cells[j].innerHTML;
+                    }
+                }
+            }
+            
+        }
+    </script>
+    <body onload="sorting">
+        <table id="main">
+            <tr>
+                <th>Employee Name</th>
+                <th>Designation</th>
+                <th>Date of Joining</th>
+                <th>Address</th>
+                <th>Salary</th>
+            </tr>
+            <tr>
+                <td>Vishal Paul</td>
+                <td>Technical Writer</td>
+                <td>20/11/2022</td>
+                <td>Pune</td>
+                <td>500000</td>
+            </tr>
+            <tr>
+                <td>Kunal Shinde</td>
+                <td>Technical Writer</td>
+                <td>20/11/2023</td>
+                <td>Pune</td>
+                <td>600000</td>
+            </tr>
+            <tr>
+                <td>Akshay Mali</td>
+                <td>Technical Support</td>
+                <td>02/01/2023</td>
+                <td>Pune</td>
+                <td>700000</td>
+            </tr>
+            <tr>
+                <td>Siddhath Salunkhe</td>
+                <td>HR</td>
+                <td>12/02/2023</td>
+                <td>Pune</td>
+                <td>400000</td>
+            </tr>
+        </table>
+
+        <H2>Technical Writers</H2>
+        <table id="tech">
+            <tr>
+                <th>Employee Name</th>
+                <th>Designation</th>
+                <th>Date of Joining</th>
+                <th>Address</th>
+                <th>Salary</th>
+            </tr>
+            <tr></tr>
+        </table>
+    </body>
+</html>
