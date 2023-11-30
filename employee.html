@@ -6,21 +6,23 @@
             text-align: center;
             color: #D6EFED;
             font-size: 12pt;
-            border: 2px #D8D9DA;
+            border: 2px solid #D8D9DA;
         }
         tr{
             font-size: 12pt;
-            border: 1px #D8D9DA;
+            border: 1px solid #D8D9DA;
+            text-align: center;
         }
         table{
             border-collapse: collapse;
             width: 100%;
-            border: 1px #D8D9DA;
+            border: 1px solid #D8D9DA;
 
         }
     </style>
     <script>
         function sorting(){
+            console.log("sorting");
             var originalTable = document.getElementById('main');
             var techWriter = document.getElementById('tech');
             var designation;
@@ -34,10 +36,23 @@
                     }
                 }
             }
-            
+            var salary = document.getElementById('sal');
+            var avSal;
+            for(var i = 0 ; i < originalTable.rows.length ; i++){
+                avSal = originalTable.rows[i].cells[4].innerHTML;
+                console.log(avSal);
+                if(avSal >= 500000 && avSal <= 700000 ){
+                    console.log(originalTable.rows[i].cells.length);
+                    var newRow = salary.insertRow(-1);
+                    for(var j = 0 ; j < originalTable.rows[i].cells.length ;j++){
+                        var newCell = newRow.insertCell(j);
+                        newCell.innerHTML = originalTable.rows[i].cells[j].innerHTML;
+                    }  
+                }
+            }
         }
     </script>
-    <body onload="sorting">
+    <body onload="sorting()">
         <table id="main">
             <tr>
                 <th>Employee Name</th>
@@ -85,7 +100,16 @@
                 <th>Address</th>
                 <th>Salary</th>
             </tr>
-            <tr></tr>
+        </table>
+        <h2>Salary > 5 lac and < 7 lac</h2>
+        <table id="sal">
+            <tr>
+                <th>Employee Name</th>
+                <th>Designation</th>
+                <th>Date of Joining</th>
+                <th>Address</th>
+                <th>Salary</th>
+            </tr>
         </table>
     </body>
 </html>
